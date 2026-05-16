@@ -308,6 +308,11 @@ class WritingAgent:
                     "NAVIGATION RULE: middle slides should end on a hook that pulls to the next "
                     "slide ('But here's the catch →', 'The fix? →', 'Step 2 changes everything →'). "
                     "Treat each slide as a cliffhanger, not a paragraph break.",
+                    # ── UNIQUENESS RULE — every slide must be distinct
+                    "UNIQUENESS RULE: even if two slides share the same role, they MUST have "
+                    "completely different hero/head/quote/headline and body/sub/support text. "
+                    "Each slide advances the narrative — never repeat a phrase, stat, or idea "
+                    "from another slide. Think of each slide as a new scene, not a copy.",
                 ],
             },
             ensure_ascii=False,
@@ -317,7 +322,7 @@ class WritingAgent:
             payload = self.client.generate_json(
                 system_prompt=system_prompt,
                 user_prompt=user_prompt,
-                max_tokens=1200,
+                max_tokens=2500,
                 temperature=0.7,
             )
         except Exception as exc:  # noqa: BLE001 — never let one writer crash the carousel
@@ -507,6 +512,9 @@ class AuthenticatorAgent:
         "  7. CTA QUALITY — the final slide names a concrete next step.\n\n"
         "For any slide that fails, REWRITE the offending slot values to fix it. "
         "Preserve <em></em> italic accents and <br> line breaks where present.\n"
+        "CRITICAL: only include slides in your response that you actually rewrote. "
+        "Do NOT include slides that passed — omitting a slide means it is approved as-is. "
+        "Each rewritten slide must have content that is completely different from every other slide.\n"
         "Return ONLY valid JSON — no markdown fences.\n"
         "Schema: {\"approved\": true|false, \"issues\": [<string>], "
         "\"slides\": [{\"index\": <int>, \"slot_values\": {<slot>: <value>}}]}"
@@ -548,7 +556,7 @@ class AuthenticatorAgent:
             payload = self.client.generate_json(
                 system_prompt=sys_with_ctx,
                 user_prompt=user_prompt,
-                max_tokens=1600,
+                max_tokens=3500,
                 temperature=0.2,
             )
         except Exception as exc:  # noqa: BLE001 — quality pass is best-effort
