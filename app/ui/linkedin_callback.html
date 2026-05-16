@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Callback</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #eef5ff 0%, #ffffff 100%);
+      font-family: "Segoe UI", sans-serif;
+      color: #0f172a;
+      padding: 24px;
+    }
+    .card {
+      width: min(760px, 100%);
+      background: #fff;
+      border: 1px solid #dbe3ec;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+    }
+    h1 { margin-top: 0; font-size: 28px; letter-spacing: -0.04em; }
+    p { color: #475569; line-height: 1.6; }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      padding: 16px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #dbe3ec;
+      color: #0a66c2;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>LinkedIn callback captured</h1>
+    <p>This page is only a temporary frontend callback helper. It reads the authorization code from the URL so you can verify the frontend flow. Real token exchange should move to the backend.</p>
+    <pre id="payload">Reading callback parameters…</pre>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const payload = {
+      code: params.get("code"),
+      state: params.get("state"),
+      error: params.get("error"),
+      error_description: params.get("error_description")
+    };
+    document.getElementById("payload").textContent = JSON.stringify(payload, null, 2);
+  </script>
+</body>
+</html>

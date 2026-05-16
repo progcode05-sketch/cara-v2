@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noxlin — Carousel Template System v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d03b2b5d-4f82-41d6-9d69-e60a2725c5fd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f1fbc91b-c911-4011-b9ea-c7887c0001a0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("24b193e5-bfd0-4259-993a-9406fc7dca49") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("65c9e8d0-e559-4449-a11d-3746c70c8347") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("5a82ea3e-95c5-4bb2-937e-9475e7a03683") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("a2e68861-cc1b-4604-810e-d727e290d6eb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("65c9e8d0-e559-4449-a11d-3746c70c8347") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5a82ea3e-95c5-4bb2-937e-9475e7a03683") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a2e68861-cc1b-4604-810e-d727e290d6eb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("65c9e8d0-e559-4449-a11d-3746c70c8347") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5a82ea3e-95c5-4bb2-937e-9475e7a03683") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("a2e68861-cc1b-4604-810e-d727e290d6eb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("ab34a524-ed13-47c6-97b4-0c1f3e17340b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("cc16fe42-0ccd-4656-a3ed-45937fb9858d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("d3994239-4371-4cb0-8206-52f72e196947") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ab34a524-ed13-47c6-97b4-0c1f3e17340b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cc16fe42-0ccd-4656-a3ed-45937fb9858d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d3994239-4371-4cb0-8206-52f72e196947") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("ab34a524-ed13-47c6-97b4-0c1f3e17340b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("cc16fe42-0ccd-4656-a3ed-45937fb9858d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d3994239-4371-4cb0-8206-52f72e196947") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("ab34a524-ed13-47c6-97b4-0c1f3e17340b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("cc16fe42-0ccd-4656-a3ed-45937fb9858d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("d3994239-4371-4cb0-8206-52f72e196947") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("ab34a524-ed13-47c6-97b4-0c1f3e17340b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("cc16fe42-0ccd-4656-a3ed-45937fb9858d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("d3994239-4371-4cb0-8206-52f72e196947") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bfee6893-690b-4a6f-956a-cbfebaf00c32") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("87034e04-a041-4487-bbd2-c4860073338d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9bfbc12c-286c-4f0e-ad44-fde16b352601") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("398f270c-e52c-4c34-adfc-e908844b6f93") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("296a12eb-bd9f-4f9f-96dc-e696847efe23") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("aacbbd42-20f6-4481-8e7e-4e9707f209cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5e355d34-b303-44c3-b388-bf018e857d9a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bb17f5b8-3a50-44eb-a345-c3ffdcbce87b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("77285644-68a4-4c49-9c78-9d0bf759489f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d8d7d574-7616-4944-bcfb-15a6e1cf90b0") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("296a12eb-bd9f-4f9f-96dc-e696847efe23") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("aacbbd42-20f6-4481-8e7e-4e9707f209cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5e355d34-b303-44c3-b388-bf018e857d9a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bb17f5b8-3a50-44eb-a345-c3ffdcbce87b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("77285644-68a4-4c49-9c78-9d0bf759489f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d8d7d574-7616-4944-bcfb-15a6e1cf90b0") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("296a12eb-bd9f-4f9f-96dc-e696847efe23") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("aacbbd42-20f6-4481-8e7e-4e9707f209cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5e355d34-b303-44c3-b388-bf018e857d9a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("bb17f5b8-3a50-44eb-a345-c3ffdcbce87b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("77285644-68a4-4c49-9c78-9d0bf759489f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d8d7d574-7616-4944-bcfb-15a6e1cf90b0") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("d82e946a-da9d-449b-8766-6d978ff590dc") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("8e1ccd3b-395b-4381-a9e9-a37261853532") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("028f2209-35f4-4a21-857a-b5a84df0d31f") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("9b36291e-6d21-4ffa-adb4-5771db13188c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("897b46c0-111f-41c7-97e1-dd2407e64454") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("4494da06-ca3b-4012-aeff-16aae08f21e4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+/* ═══════════════════════════════════════════════════════
+   GLOBAL — GALLERY SHELL
+   ═══════════════════════════════════════════════════════ */
+:root {
+  --nx-blue: #0A66C2;
+  --nx-blue-dark: #004182;
+  --nx-blue-light: #70B5F9;
+  --nx-blue-tint: #EEF5FF;
+  --nx-cream: #F5F2EB;
+  --nx-paper: #FAF8F3;
+  --nx-white: #FFFFFF;
+  --nx-black: #0A0A0A;
+  --nx-ink: #111318;
+  --nx-text2: #434649;
+  --nx-muted: #86888A;
+  --nx-border: #E3E1DB;
+  --nx-border-cool: #DDE1E6;
+  --nx-surface: #F3F6F8;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--nx-paper);
+  font-family: 'Manrope', sans-serif;
+  color: var(--nx-black);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Cover */
+.shell-cover {
+  background: var(--nx-black);
+  color: #fff;
+  padding: 88px 64px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.shell-cover::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--nx-blue-light) 50%, transparent 100%);
+  opacity: 0.6;
+}
+.shell-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(112, 181, 249, 0.08);
+  border: 1px solid rgba(112, 181, 249, 0.25);
+  color: var(--nx-blue-light);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 28px;
+}
+.shell-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--nx-blue-light);
+  box-shadow: 0 0 10px var(--nx-blue-light);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.shell-cover h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(44px, 6.4vw, 76px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+  font-variation-settings: "opsz" 96;
+  max-width: 980px;
+}
+.shell-cover h1 em {
+  color: var(--nx-blue-light);
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.shell-cover .lede {
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.shell-cover .lede b { color: #fff; font-weight: 600; }
+.shell-meta {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.shell-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 13px; border-radius: 100px;
+}
+
+/* Intro — philosophy + ratio */
+.intro {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 72px 64px 32px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 900px) { .intro { grid-template-columns: 1fr; padding: 48px 24px 20px; gap: 32px; } }
+.intro-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nx-blue);
+  margin-bottom: 14px;
+}
+.intro h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 36px; font-weight: 500; letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 580px;
+}
+.intro h2 em { font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; color: var(--nx-blue); }
+.intro p { color: var(--nx-text2); line-height: 1.75; font-size: 15px; margin-bottom: 14px; max-width: 560px; }
+.intro p b { color: var(--nx-black); font-weight: 600; }
+
+.ratio-card {
+  background: var(--nx-white);
+  border: 1px solid var(--nx-border);
+  border-radius: 16px;
+  padding: 28px;
+}
+.ratio-card .rc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--nx-muted);
+  margin-bottom: 14px;
+}
+.ratio-box {
+  width: 120px; height: 150px;
+  background: var(--nx-blue);
+  border-radius: 8px;
+  color: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 28px rgba(10, 102, 194, 0.2);
+}
+.ratio-box .r-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
+.ratio-box .r-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; opacity: 0.78; margin-top: 4px; letter-spacing: 0.06em; }
+.rc-rows { display: grid; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--nx-text2); }
+.rc-row { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--nx-border); padding-bottom: 8px; }
+.rc-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.rc-row b { color: var(--nx-blue); font-weight: 600; }
+
+/* Principles strip */
+.principles {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 64px 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) { .principles { grid-template-columns: repeat(2, 1fr); padding: 12px 24px 32px; } }
+.principle {
+  border-top: 1px solid var(--nx-border);
+  padding-top: 16px;
+}
+.principle .p-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  color: var(--nx-blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.principle .p-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 18px; font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
+}
+.principle .p-body {
+  font-size: 13px; color: var(--nx-text2); line-height: 1.6;
+}
+
+/* Template section */
+.template-section {
+  max-width: 1180px;
+  margin: 0 auto 64px;
+  padding: 0 64px;
+}
+@media (max-width: 900px) { .template-section { padding: 0 24px; } }
+.t-header {
+  display: flex; align-items: baseline; gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  border-top: 1px solid var(--nx-border);
+  padding-top: 52px;
+}
+.t-name { flex: 0 1 auto; min-width: 0; }
+.t-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--nx-muted);
+  letter-spacing: 0.08em;
+}
+.t-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+.t-tag {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nx-blue);
+  background: var(--nx-blue-tint);
+  border: 1px solid rgba(10, 102, 194, 0.18);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+.t-desc {
+  color: var(--nx-text2); font-size: 15px; line-height: 1.75;
+  max-width: 820px; margin-bottom: 32px;
+}
+.t-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 920px) { .t-body { grid-template-columns: 1fr; } }
+
+/* Slide rendering — authored at 1080×1350, scaled for preview */
+.slide-pair { display: flex; gap: 18px; }
+.slide-wrap {
+  position: relative;
+  width: 378px;
+  height: 472.5px;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.06);
+  background: #fff;
+  flex-shrink: 0;
+}
+.slide {
+  width: 1080px;
+  height: 1350px;
+  transform: scale(0.35);
+  transform-origin: top left;
+  position: relative;
+  overflow: hidden;
+}
+.slide-label {
+  position: absolute;
+  top: 10px; left: 10px;
+  z-index: 100;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  padding: 3px 10px; border-radius: 100px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+@media (max-width: 800px) { .slide-pair { flex-direction: column; } }
+
+.t-notes {
+  background: var(--nx-white);
+  border: 1px solid var(--nx-border);
+  border-radius: 16px;
+  padding: 26px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--nx-text2);
+}
+.t-notes h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--nx-blue);
+  margin-bottom: 8px; margin-top: 18px;
+}
+.t-notes h4:first-child { margin-top: 0; }
+.t-notes ul { padding-left: 16px; }
+.t-notes li { margin-bottom: 3px; }
+.t-notes code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; background: var(--nx-paper); border: 1px solid var(--nx-border);
+  padding: 1px 6px; border-radius: 4px; color: var(--nx-blue);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SLIDE DEFAULTS
+   ═══════════════════════════════════════════════════════ */
+.slide * { box-sizing: border-box; }
+
+/* Shared Noxlin wordmark */
+.nx-brand {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+}
+.nx-brand .nx-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--nx-blue);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+.nx-brand.light .nx-mark { background: #fff; color: var(--nx-blue); }
+.nx-brand.ghost .nx-mark { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+
+/* Standard footer author row used by several templates */
+.nx-footer {
+  position: absolute; bottom: 70px; left: 80px; right: 80px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nx-author {
+  display: flex; align-items: center; gap: 14px;
+}
+.nx-author > div:last-child { min-width: 140px; }
+.nx-author .av {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--nx-blue-light), var(--nx-blue-dark));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 26px;
+}
+.nx-author .name { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 22px; }
+.nx-author .handle { font-family: 'JetBrains Mono', monospace; font-size: 16px; opacity: 0.6; margin-top: 3px; }
+
+.nx-arrow {
+  width: 92px; height: 52px;
+  border-radius: 100px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHARED STAMP — bottom-right branding, every slide
+   ═══════════════════════════════════════════════════════ */
+.nx-stamp {
+  position: absolute;
+  right: 80px;
+  bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(10, 10, 10, 0.42);
+  z-index: 10;
+}
+.nx-stamp .sp-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+}
+.nx-stamp .sp-serif {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 1;
+  color: var(--nx-blue);
+}
+/* Dark-bg variants */
+.nx-mono .nx-stamp,
+.nx-grad .nx-stamp,
+.nx-cta .nx-stamp,
+.nx-num.cover .nx-stamp,
+.nx-quote.content .nx-stamp {
+  color: rgba(255, 255, 255, 0.55);
+}
+.nx-mono .nx-stamp .sp-serif,
+.nx-grad .nx-stamp .sp-serif,
+.nx-cta .nx-stamp .sp-serif,
+.nx-num.cover .nx-stamp .sp-serif,
+.nx-quote.content .nx-stamp .sp-serif {
+  color: var(--nx-blue-light);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TEMPLATE 01 — NOXLIN MONO  (keynote-black, one idea)
+   ═══════════════════════════════════════════════════════ */
+.nx-mono {
+  background: var(--nx-black);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  padding: 80px;
+}
+.nx-mono .top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+}
+.nx-mono .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--nx-blue-light);
+  margin-top: 340px;
+  margin-bottom: 44px;
+}
+.nx-mono .hero {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: 178px;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  font-variation-settings: "opsz" 96;
+  max-width: 920px;
+}
+.nx-mono .hero em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue-light);
+}
+.nx-mono.content .hero { font-size: 132px; max-width: 880px; }
+.nx-mono.content .kicker { margin-top: 240px; }
+.nx-mono .support {
+  font-size: 28px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  max-width: 760px;
+  margin-top: 60px;
+  font-weight: 300;
+}
+.nx-mono .support b { color: #fff; font-weight: 500; }
+.nx-mono .nx-author .name { color: #fff; }
+.nx-mono .nx-author .handle { color: rgba(255,255,255,0.5); }
+.nx-mono .nx-arrow {
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+/* 02 — NOXLIN PAPER  (cream essay) */
+.nx-paper {
+  background: var(--nx-cream);
+  color: var(--nx-black);
+  font-family: 'Manrope', sans-serif;
+  padding: 80px;
+  position: relative;
+}
+.nx-paper::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.28'/></svg>");
+  opacity: 0.55; mix-blend-mode: multiply; pointer-events: none;
+}
+.nx-paper .top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  position: relative; z-index: 2;
+  text-align: left;
+}
+.nx-paper .top .nx-brand { text-align: left; }
+.nx-paper .issue {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: var(--nx-muted);
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+.nx-paper .issue b { color: var(--nx-black); font-weight: 600; }
+.nx-paper .hero-wrap {
+  position: relative; z-index: 2;
+  margin-top: 200px;
+  max-width: 880px;
+}
+.nx-paper .hero-intro {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 72px;
+  color: var(--nx-blue);
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.nx-paper .hero {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 144;
+  font-weight: 500;
+  font-size: 124px;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--nx-black);
+}
+.nx-paper .sub {
+  position: relative; z-index: 2;
+  margin-top: 56px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nx-text2);
+  max-width: 720px;
+  line-height: 1.7;
+}
+.nx-paper .nx-footer { z-index: 3; }
+.nx-paper .nx-arrow { border: 1.5px solid var(--nx-blue); color: var(--nx-blue); }
+
+.nx-paper.content .hero-wrap { margin-top: 120px; max-width: 900px; }
+.nx-paper.content .hero { font-size: 78px; line-height: 1.06; font-weight: 500; }
+.nx-paper.content .hero em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue);
+}
+.nx-paper.content .body {
+  position: relative; z-index: 2;
+  margin-top: 72px;
+  font-size: 26px;
+  line-height: 1.6;
+  color: var(--nx-text2);
+  max-width: 820px;
+}
+.nx-paper.content .body p { margin-bottom: 18px; }
+.nx-paper.content .body p:last-child { margin-bottom: 0; }
+.nx-paper.content .body b { color: var(--nx-black); font-weight: 700; }
+.nx-paper.content .drop-cap {
+  float: left;
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-variation-settings: "opsz" 144;
+  font-size: 140px;
+  line-height: 0.82;
+  color: var(--nx-blue);
+  padding-right: 20px;
+  padding-top: 4px;
+}
+.nx-paper.content .body::after { content:''; display:block; clear:both; }
+
+/* 03 — NOXLIN BIG NUMBER */
+.nx-num {
+  font-family: 'Manrope', sans-serif;
+  position: relative;
+  padding: 80px;
+  overflow: hidden;
+}
+.nx-num.cover { background: var(--nx-blue); color: #fff; }
+.nx-num.content { background: #fff; color: var(--nx-black); }
+.nx-num .top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  z-index: 3;
+  position: relative;
+}
+.nx-num.cover .top { color: rgba(255,255,255,0.85); }
+.nx-num.content .top { color: var(--nx-muted); }
+.nx-num .numeral {
+  position: absolute;
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+  z-index: 1;
+  user-select: none;
+}
+.nx-num.cover .numeral {
+  font-size: 780px;
+  color: rgba(255,255,255,0.85);
+  top: 60px;
+  left: 70px;
+}
+.nx-num.content .numeral {
+  font-size: 1020px;
+  color: var(--nx-blue-tint);
+  top: 130px;
+  right: -110px;
+}
+.nx-num .hero-wrap {
+  position: absolute;
+  z-index: 2;
+  max-width: 580px;
+}
+.nx-num.cover .hero-wrap { top: 820px; left: 80px; right: 80px; max-width: 920px; text-align: left; }
+.nx-num.content .hero-wrap { top: 340px; left: 80px; text-align: left; }
+.nx-num .hero {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--nx-black);
+}
+.nx-num.cover .hero { color: #fff; }
+.nx-num .hero em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue);
+}
+.nx-num.cover .hero em { color: #fff; opacity: 0.95; }
+
+.nx-num .sub {
+  font-size: 22px;
+  line-height: 1.55;
+  margin-top: 22px;
+  color: var(--nx-black);
+  opacity: 0.72;
+  max-width: 540px;
+}
+.nx-num.content .sub { color: var(--nx-text2); opacity: 1; }
+.nx-num.cover .hero-wrap .sub { color: rgba(255,255,255,0.85); }
+.nx-num .nx-footer { z-index: 3; }
+
+.nx-num.cover .nx-author .name { color: #fff; }
+.nx-num.cover .nx-author .handle { color: rgba(255,255,255,0.7); }
+.nx-num.cover .nx-author .av { border: 2px solid rgba(255,255,255,0.35); }
+.nx-num .bookmark {
+  width: 32px; height: 44px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+.nx-num.cover .bookmark { background: #fff; }
+.nx-num.content .bookmark { background: var(--nx-blue); }
+
+/* 04 — NOXLIN QUOTE */
+.nx-quote {
+  background: var(--nx-paper);
+  color: var(--nx-black);
+  font-family: 'Manrope', sans-serif;
+  padding: 80px;
+  position: relative;
+}
+.nx-quote.content { background: var(--nx-black); color: #fff; }
+.nx-quote .top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--nx-muted);
+  z-index: 3;
+  position: relative;
+}
+.nx-quote.content .top { color: rgba(255,255,255,0.6); }
+.nx-quote .glyph {
+  position: absolute;
+  top: 100px;
+  left: 70px;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-variation-settings: "opsz" 144;
+  font-size: 460px;
+  line-height: 0.8;
+  color: var(--nx-blue);
+  opacity: 1;
+  z-index: 1;
+  user-select: none;
+}
+.nx-quote.content .glyph { color: var(--nx-blue-light); opacity: 0.9; }
+.nx-quote .quote-body {
+  position: relative; z-index: 2;
+  margin-top: 380px;
+  max-width: 880px;
+}
+.nx-quote .quote {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: 88px;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--nx-black);
+}
+.nx-quote.content .quote { color: #fff; }
+.nx-quote .quote em {
+  font-style: italic;
+  color: var(--nx-blue);
+  font-weight: 400;
+}
+.nx-quote.content .quote em { color: var(--nx-blue-light); }
+.nx-quote .attrib {
+  position: relative; z-index: 2;
+  margin-top: 64px;
+  display: flex; align-items: center; gap: 18px;
+}
+.nx-quote .attrib .rule {
+  width: 64px; height: 2px;
+  background: var(--nx-blue);
+}
+.nx-quote .attrib .who {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nx-text2);
+}
+.nx-quote.content .attrib .who { color: rgba(255,255,255,0.7); }
+.nx-quote .attrib .who b {
+  color: var(--nx-black); font-weight: 700;
+}
+.nx-quote.content .attrib .who b { color: #fff; }
+
+.nx-quote.content .glyph {
+  top: 80px; left: 60px;
+  font-size: 520px;
+  color: rgba(112,181,249,0.22);
+}
+
+/* 05 — NOXLIN GRID (Swiss 12-col) */
+.nx-grid {
+  background: #fff;
+  color: var(--nx-black);
+  font-family: 'Manrope', sans-serif;
+  padding: 72px 80px;
+  position: relative;
+}
+.nx-grid .top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: var(--nx-muted);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--nx-border);
+  letter-spacing: 0.04em;
+}
+.nx-grid .top b { color: var(--nx-blue); font-weight: 600; }
+.nx-grid .top .c { text-align: center; }
+.nx-grid .top .r { text-align: right; }
+.nx-grid .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--nx-blue);
+  margin-top: 60px;
+}
+.nx-grid .headline {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: 136px;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin-top: 32px;
+  font-variation-settings: "opsz" 96;
+  max-width: 860px;
+}
+.nx-grid .headline em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue);
+}
+.nx-grid .grid-body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin-top: 120px;
+}
+.nx-grid .grid-body .lead {
+  grid-column: span 7;
+  font-size: 27px;
+  line-height: 1.55;
+  color: var(--nx-text2);
+}
+.nx-grid .grid-body .lead b { color: var(--nx-black); font-weight: 700; }
+.nx-grid .grid-body .side {
+  grid-column: span 5;
+  border-left: 1px solid var(--nx-border);
+  padding-left: 28px;
+}
+.nx-grid .grid-body .side .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nx-muted);
+  margin-bottom: 14px;
+}
+.nx-grid .grid-body .side .stat {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 88px;
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--nx-blue);
+}
+.nx-grid .grid-body .side .statsub {
+  font-size: 20px;
+  color: var(--nx-text2);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.nx-grid .nx-footer { border-top: 1px solid var(--nx-border); padding-top: 22px; bottom: 70px; }
+
+/* Content variant — three columns */
+.nx-grid.content .headline { font-size: 92px; max-width: 900px; }
+.nx-grid.content .three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 100px;
+}
+.nx-grid.content .three-col .col {
+  padding-top: 22px;
+  border-top: 2px solid var(--nx-blue);
+}
+.nx-grid.content .three-col .c-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.14em; color: var(--nx-blue); font-weight: 600;
+  margin-bottom: 16px;
+}
+.nx-grid.content .three-col .c-t {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 32px; font-weight: 600; letter-spacing: -0.015em;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.nx-grid.content .three-col .c-b {
+  font-size: 18px; color: var(--nx-text2); line-height: 1.55;
+}
+
+/* 06 — NOXLIN GRADIENT (atmospheric blue + grain) */
+.nx-grad {
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  padding: 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(112,181,249,0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 100%, rgba(0,25,70,0.55) 0%, transparent 55%),
+    linear-gradient(160deg, #0A3C7A 0%, #0A66C2 55%, #4B93DC 100%);
+}
+.nx-grad::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity: 0.42; mix-blend-mode: overlay; pointer-events: none;
+}
+.nx-grad .top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px; color: rgba(255,255,255,0.82);
+  position: relative; z-index: 2;
+}
+.nx-grad .chip {
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 8px 22px; border-radius: 100px;
+  font-weight: 600; letter-spacing: 0.16em;
+  font-size: 16px;
+}
+.nx-grad .page-c {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 16px;
+}
+.nx-grad .pre {
+  position: relative; z-index: 2;
+  margin-top: 110px;
+  max-width: 560px;
+  font-size: 24px; line-height: 1.55;
+  color: rgba(255,255,255,0.88);
+  text-align: left;
+}
+.nx-grad .hero {
+  position: relative; z-index: 2;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 154px; line-height: 0.96;
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 96;
+  margin-top: 100px;
+}
+.nx-grad .hero .thin { font-weight: 300; }
+.nx-grad .hero .bold { font-weight: 700; }
+.nx-grad .hero em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255,255,255,0.95);
+}
+.nx-grad .bottom-pill {
+  position: absolute; bottom: 70px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px;
+  z-index: 2;
+}
+.nx-grad .bottom-pill .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--nx-blue-light);
+  box-shadow: 0 0 10px var(--nx-blue-light);
+}
+.nx-grad .bottom-pill span { display: flex; align-items: center; gap: 12px; }
+
+/* Content — stat hero */
+.nx-grad.content .stat {
+  position: relative; z-index: 2;
+  text-align: left;
+  margin-top: 130px;
+}
+.nx-grad.content .stat .big {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 380px;
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  background: linear-gradient(180deg, #fff 10%, rgba(255,255,255,0.5) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nx-grad.content .stat .unit {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 64px;
+  color: rgba(255,255,255,0.9);
+  margin-top: -18px;
+}
+.nx-grad.content .stat .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-top: 40px;
+}
+.nx-grad.content .support {
+  position: relative; z-index: 2;
+  margin: 80px 0 0;
+  max-width: 760px;
+  font-size: 27px;
+  line-height: 1.55;
+  text-align: left;
+  color: rgba(255,255,255,0.88);
+}
+.nx-grad.content .support b { color: #fff; font-weight: 700; }
+
+/* 07 — NOXLIN SWIPE / CTA */
+.nx-cta {
+  background: var(--nx-black);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  padding: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.nx-cta::after {
+  content: '';
+  position: absolute;
+  right: -220px; bottom: -220px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle at center, rgba(10,102,194,0.55) 0%, transparent 65%);
+  pointer-events: none;
+}
+.nx-cta .top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px; color: rgba(255,255,255,0.6);
+  position: relative; z-index: 2;
+}
+.nx-cta .final-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nx-blue-light);
+  border: 1px solid rgba(112,181,249,0.4);
+  padding: 8px 18px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(112,181,249,0.08);
+  position: relative; z-index: 2;
+  margin-top: 280px;
+}
+.nx-cta .final-chip .d {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--nx-blue-light);
+  box-shadow: 0 0 10px var(--nx-blue-light);
+}
+.nx-cta .head {
+  position: relative; z-index: 2;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: 120px;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-top: 36px;
+  font-variation-settings: "opsz" 96;
+  max-width: 900px;
+}
+.nx-cta .head em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue-light);
+}
+.nx-cta .sub {
+  position: relative; z-index: 2;
+  margin-top: 36px;
+  font-size: 26px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.72);
+  max-width: 720px;
+  font-weight: 300;
+}
+.nx-cta .sub b { color: #fff; font-weight: 500; }
+.nx-cta .cta-button {
+  position: absolute;
+  bottom: 210px; left: 80px;
+  z-index: 3;
+  display: inline-flex; align-items: center; gap: 18px;
+  background: #fff;
+  color: var(--nx-black);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  padding: 20px 34px;
+  border-radius: 100px;
+}
+.nx-cta .cta-button .arr {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--nx-blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.nx-cta .nx-footer { z-index: 3; }
+.nx-cta .nx-author .name { color: #fff; }
+.nx-cta .nx-author .handle { color: rgba(255,255,255,0.55); }
+
+/* 07 content variant — "swipe" mid-deck */
+.nx-cta.content { background: #fff; color: var(--nx-black); }
+.nx-cta.content .head { font-size: 108px; }
+.nx-cta.content::after { opacity: 0.15; }
+.nx-cta.content .top { color: var(--nx-muted); }
+.nx-cta.content .final-chip {
+  color: var(--nx-blue);
+  border-color: rgba(10,102,194,0.3);
+  background: var(--nx-blue-tint);
+}
+.nx-cta.content .head em { color: var(--nx-blue); }
+.nx-cta.content .sub { color: var(--nx-text2); }
+.nx-cta.content .sub b { color: var(--nx-black); }
+.nx-cta.content .cta-button {
+  background: var(--nx-black); color: #fff;
+}
+.nx-cta.content .cta-button .arr { background: var(--nx-blue-light); color: var(--nx-black); }
+.nx-cta.content .nx-author .name { color: var(--nx-black); }
+.nx-cta.content .nx-author .handle { color: var(--nx-muted); }
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+.shell-footer {
+  background: var(--nx-black);
+  color: #fff;
+  padding: 56px 64px;
+  display: flex; flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 56px;
+}
+.shell-footer .brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 30px; font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.shell-footer .brand em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--nx-blue-light);
+}
+.shell-footer .note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+}
+.shell-footer .note b { color: #fff; font-weight: 600; }
+</style>
+</head>
+<body>
+
+
+
+<!-- ═══════════════════════════════════════════════════════ SHELL COVER ═══════════════════════════════════════════════════════ -->
+<div class="shell-cover">
+  <div class="shell-badge"><span class="shell-dot"></span>Noxlin · Carousel System · v2</div>
+  <h1>Seven templates for <em>effortless</em><br>LinkedIn growth.</h1>
+  <div class="lede">A refined carousel system for Noxlin — built at <b>1080×1350 (4:5)</b>, the native LinkedIn portrait ratio. Designed around Apple-keynote minimalism: one idea per slide, projection-scale type, premium restraint. Every template shares the same brand, typographic pairing, and safe-margins so any combination reads as one system.</div>
+  <div class="shell-meta">
+    <span class="shell-pill">Ratio · 1080 × 1350 px</span>
+    <span class="shell-pill">Templates · 7</span>
+    <span class="shell-pill">Slides shown · 14 (cover + content)</span>
+    <span class="shell-pill">Brand · Noxlin</span>
+    <span class="shell-pill">Aesthetic · Apple / Jobs</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ INTRO ═══════════════════════════════════════════════════════ -->
+<div class="intro">
+  <div>
+    <div class="intro-kicker">Design Philosophy</div>
+    <h2>Simplicity is the <em>ultimate</em> sophistication.</h2>
+    <p>Noxlin removes effort — the carousels should do the same. Every template was designed for the scroll: one message, one focal element, nothing competing. No stock icons. No decoration-for-decoration. Typography carries the weight.</p>
+    <p><b>What's shared across all seven:</b> the same 80px safe margins, the same Noxlin wordmark, the same author card pattern, the same brand palette (#0A66C2 primary, cream + black neutrals) and the same type pairing — so any seven of these slides in a row read as one coherent system.</p>
+    <p><b>What differs:</b> background strategy, hero composition, and the mood each template carries — picking the right template is a content-type decision, not a design one.</p>
+  </div>
+  <div class="ratio-card">
+    <div class="rc-label">The canvas</div>
+    <div class="ratio-box">
+      <div class="r-num">4 : 5</div>
+      <div class="r-lbl">1080 × 1350</div>
+    </div>
+    <div class="rc-rows">
+      <div class="rc-row"><span>LinkedIn native</span><b>4:5</b></div>
+      <div class="rc-row"><span>Safe margins</span><b>80 px</b></div>
+      <div class="rc-row"><span>Author card</span><b>bottom 70 px</b></div>
+      <div class="rc-row"><span>Page counter</span><b>top right</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- Principles -->
+<div class="principles">
+  <div class="principle">
+    <div class="p-num">01</div>
+    <div class="p-title">One idea per slide</div>
+    <div class="p-body">If a slide has two ideas, split it. The scroll rewards clarity.</div>
+  </div>
+  <div class="principle">
+    <div class="p-num">02</div>
+    <div class="p-title">Type does the work</div>
+    <div class="p-body">Five fonts used deliberately — no illustrations, no filler icons.</div>
+  </div>
+  <div class="principle">
+    <div class="p-num">03</div>
+    <div class="p-title">Restraint over volume</div>
+    <div class="p-body">Whitespace is a feature. The best slide often has the least on it.</div>
+  </div>
+  <div class="principle">
+    <div class="p-num">04</div>
+    <div class="p-title">Consistent rhythm</div>
+    <div class="p-body">Shared margins, counters, author card. The frame fades; the message lands.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 01 — NOXLIN MONO ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">01</div>
+    <div class="t-name">Noxlin Mono</div>
+    <div class="t-tag">Keynote · Big statements</div>
+  </div>
+  <p class="t-desc">Pitch-black stage. One idea. Sized for the back of the room. This is the template for announcements and strong opening hooks — nothing on the slide that isn't earning its place. An italic serif accent carries the one word we want the reader to linger on.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Cover</div>
+        <div class="slide nx-mono">
+          <div class="top">
+            <div class="nx-brand ghost"><div class="nx-mark">N</div>noxlin</div>
+            <div>01 / 07</div>
+          </div>
+          <div class="kicker">— A LINKEDIN GROWTH SYSTEM</div>
+          <div class="hero">Stop <em>posting</em>.<br>Start growing.</div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin</div>
+              </div>
+            </div>
+            <div class="nx-arrow">swipe →</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Content</div>
+        <div class="slide nx-mono content">
+          <div class="top">
+            <div class="nx-brand ghost"><div class="nx-mark">N</div>noxlin</div>
+            <div>02 / 07</div>
+          </div>
+          <div class="kicker">— THE INSIGHT</div>
+          <div class="hero">You don't<br>need more <em>tools</em>.</div>
+          <div class="support">You need a <b>system</b> that takes a raw idea and returns a month of content, captions and scheduled posts — without asking you to learn anything.</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>Launches &amp; announcements</li>
+        <li>Opening hooks</li>
+        <li>Contrarian takes</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Bricolage Grotesque</code> hero</li>
+        <li><code>Instrument Serif</code> italic</li>
+        <li><code>JetBrains Mono</code> meta</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>Max 6–8 words in hero</li>
+        <li>Exactly one italic accent</li>
+        <li>No imagery — type only</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 02 — NOXLIN PAPER ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">02</div>
+    <div class="t-name">Noxlin Paper</div>
+    <div class="t-tag">Essays · Founder thinking</div>
+  </div>
+  <p class="t-desc">Warm cream canvas, Fraunces serif for weight, Instrument Serif italic for the intro — the template for founder essays and long-form thinking. The paper grain is subtle; the restraint is not. A drop-cap starts the content slide like a magazine feature.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Cover</div>
+        <div class="slide nx-paper">
+          <div class="top">
+            <div class="issue"><b>Essay № 07</b><br>On LinkedIn growth<br>April 2026</div>
+            <div class="nx-brand"><div class="nx-mark">N</div>noxlin</div>
+          </div>
+          <div class="hero-wrap">
+            <div class="hero-intro">A note on</div>
+            <div class="hero">Building a brand you don't have time for.</div>
+          </div>
+          <div class="sub">The myth of "one more founder who posts every day" — and the system that replaced it.</div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av" style="background: linear-gradient(135deg, var(--nx-blue-light), var(--nx-blue-dark));">N</div>
+              <div>
+                <div class="name" style="color: var(--nx-black);">Noxlin</div>
+                <div class="handle" style="color: var(--nx-muted);">@noxlin · 01 / 06</div>
+              </div>
+            </div>
+            <div class="nx-arrow">→</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Content</div>
+        <div class="slide nx-paper content">
+          <div class="top">
+            <div class="issue"><b>Essay № 07</b><br>Chapter one</div>
+            <div class="nx-brand"><div class="nx-mark">N</div>noxlin</div>
+          </div>
+          <div class="hero-wrap">
+            <div class="hero">You don't need more <em>time</em>.<br>You need a system.</div>
+          </div>
+          <div class="body">
+            <p><span class="drop-cap">T</span>he founders who grew fastest on LinkedIn this year weren't the ones writing the most. They'd stopped writing in real time altogether — replacing the "I should post today" panic with a calendar set once and forgotten.</p>
+            <p>What looks like <b>consistency</b> from the outside is almost always a system on the inside.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>Founder essays</li>
+        <li>Opinion pieces</li>
+        <li>"A note from…" posts</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Fraunces</code> display serif</li>
+        <li><code>Instrument Serif</code> italic</li>
+        <li><code>Manrope</code> body</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>Italic blue for one phrase</li>
+        <li>Drop-cap on opening para</li>
+        <li>Paper grain always present</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 03 — NOXLIN BIG NUMBER ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">03</div>
+    <div class="t-name">Noxlin Big Number</div>
+    <div class="t-tag">Lists · "N reasons" posts</div>
+  </div>
+  <p class="t-desc">A massive serif numeral does all the work. The cover is solid Noxlin blue with a white numeral; content slides invert to white with the same numeral rendered as a tinted watermark. The numeral advances 1, 2, 3… as the reader swipes — built-in visual rhythm.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Cover</div>
+        <div class="slide nx-num cover">
+          <div class="top">
+            <div>noxlin.com</div>
+            <div>01 / 06</div>
+          </div>
+          <div class="numeral">5</div>
+          <div class="hero-wrap">
+            <div class="hero">Reasons your LinkedIn <em>stopped</em> growing.</div>
+            <div class="sub">And the fix for each — based on 2M posts analysed by Noxlin.</div>
+          </div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av" style="background: rgba(255,255,255,0.18); border: 2px solid rgba(255,255,255,0.35);">N</div>
+              <div>
+                <div class="name" style="color:#fff">Noxlin</div>
+                <div class="handle" style="color:rgba(255,255,255,0.75)">@noxlin</div>
+              </div>
+            </div>
+            <div class="bookmark"></div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Content</div>
+        <div class="slide nx-num content">
+          <div class="top">
+            <div>noxlin.com</div>
+            <div>02 / 06</div>
+          </div>
+          <div class="numeral">1</div>
+          <div class="hero-wrap">
+            <div class="hero">You post in <em>bursts</em>, then disappear.</div>
+            <div class="sub">LinkedIn rewards frequency consistency far more than quality spikes. A steady 3-posts-a-week account outgrows a 10-post binge every time.</div>
+          </div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin</div>
+              </div>
+            </div>
+            <div class="bookmark"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>"5 reasons…"</li>
+        <li>"7 ways to…"</li>
+        <li>"3 myths…"</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Fraunces</code> numeral (opsz 144)</li>
+        <li><code>Bricolage Grotesque</code> hero</li>
+        <li><code>Manrope</code> body</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>Cover: blue bg, white numeral</li>
+        <li>Content: white bg, tinted numeral</li>
+        <li>Numeral advances 1, 2, 3…</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 04 — NOXLIN QUOTE ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">04</div>
+    <div class="t-name">Noxlin Quote</div>
+    <div class="t-tag">Quote cards · Reframes</div>
+  </div>
+  <p class="t-desc">A giant serif quotation glyph anchors the slide; the line of type takes the stage. Works light or dark — cream for warmth, black for gravitas. Built for a single, memorable sentence you want people to screenshot.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Light</div>
+        <div class="slide nx-quote">
+          <div class="top">
+            <div>— Pull-quote · Essay № 07</div>
+            <div>04 / 06</div>
+          </div>
+          <div class="glyph">“</div>
+          <div class="quote-body">
+            <div class="quote">Consistency is a <em>scheduling</em> problem,<br>not a creative one.</div>
+          </div>
+          <div class="attrib">
+            <div class="rule"></div>
+            <div class="who">Noxlin — <b>On LinkedIn growth</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Dark</div>
+        <div class="slide nx-quote content">
+          <div class="top">
+            <div>— Pull-quote · Essay № 07</div>
+            <div>05 / 06</div>
+          </div>
+          <div class="glyph">“</div>
+          <div class="quote-body">
+            <div class="quote">People don't want <em>tools</em>.<br>They want outcomes.</div>
+          </div>
+          <div class="attrib">
+            <div class="rule"></div>
+            <div class="who">Noxlin — <b>Founding principle</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>Pull quotes</li>
+        <li>Reframes</li>
+        <li>Shareable one-liners</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Fraunces</code> quote</li>
+        <li><code>Instrument Serif</code> italic accent</li>
+        <li><code>JetBrains Mono</code> attribution</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>Max 12 words in quote</li>
+        <li>Glyph always the same size</li>
+        <li>Attribution rule always 64px</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 05 — NOXLIN GRID ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">05</div>
+    <div class="t-name">Noxlin Grid</div>
+    <div class="t-tag">Data · Frameworks · How-it-works</div>
+  </div>
+  <p class="t-desc">Swiss-grid discipline. Monospace meta labels, a 12-column lead/side split for hero slides, and a clean three-column breakdown for explainers. Use when the content is structural and deserves to be shown as structure.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Cover</div>
+        <div class="slide nx-grid">
+          <div class="top">
+            <div>NOXLIN / <b>SYSTEM</b></div>
+            <div class="c">03 — HOW IT WORKS</div>
+            <div class="r">PAGE 01 / 05</div>
+          </div>
+          <div class="eyebrow">— The pipeline</div>
+          <div class="headline">Idea in.<br>Calendar <em>out</em>.</div>
+          <div class="grid-body">
+            <div class="lead">Noxlin turns one raw idea into <b>30 days of content</b> — written, designed, captioned and scheduled — without you opening a single tool.</div>
+            <div class="side">
+              <div class="label">— Output</div>
+              <div class="stat">30</div>
+              <div class="statsub">posts, designed and scheduled in a single click</div>
+            </div>
+          </div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin</div>
+              </div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:16px; color:var(--nx-muted);">noxlin.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Content</div>
+        <div class="slide nx-grid content">
+          <div class="top">
+            <div>NOXLIN / <b>SYSTEM</b></div>
+            <div class="c">03 — HOW IT WORKS</div>
+            <div class="r">PAGE 03 / 05</div>
+          </div>
+          <div class="eyebrow">— Three layers, one pipeline</div>
+          <div class="headline">The system, <em>simplified</em>.</div>
+          <div class="three-col">
+            <div class="col">
+              <div class="c-num">01 — INPUT</div>
+              <div class="c-t">You describe the problem.</div>
+              <div class="c-b">One sentence is enough. Niche, audience and tone are inferred — you don't configure anything.</div>
+            </div>
+            <div class="col">
+              <div class="c-num">02 — ENGINE</div>
+              <div class="c-t">Noxlin writes &amp; designs.</div>
+              <div class="c-b">AI drafts the hooks, structures the carousel, writes the caption, and renders every slide to brand.</div>
+            </div>
+            <div class="col">
+              <div class="c-num">03 — DISTRIBUTION</div>
+              <div class="c-t">It posts itself.</div>
+              <div class="c-b">Your calendar fills at the right times, on the right days, across the platforms that matter.</div>
+            </div>
+          </div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin</div>
+              </div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:16px; color:var(--nx-muted);">noxlin.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>How-it-works</li>
+        <li>Frameworks &amp; breakdowns</li>
+        <li>Data &amp; stats</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Bricolage Grotesque</code> headline</li>
+        <li><code>JetBrains Mono</code> meta</li>
+        <li><code>Manrope</code> body</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>12-col grid is law</li>
+        <li>Always three columns max</li>
+        <li>Top strip on every slide</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 06 — NOXLIN GRADIENT ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">06</div>
+    <div class="t-name">Noxlin Gradient</div>
+    <div class="t-tag">Thought leadership · Stats</div>
+  </div>
+  <p class="t-desc">An atmospheric Noxlin-blue gradient with subtle grain. Mixed-weight display typography (thin + bold + italic-serif) creates rhythm inside the hero line itself. The stat-mode content slide turns a single number into the whole composition.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Cover</div>
+        <div class="slide nx-grad">
+          <div class="top">
+            <div class="nx-brand ghost"><div class="nx-mark">N</div>noxlin</div>
+            <div class="chip">LINKEDIN GROWTH</div>
+            <div class="page-c">1</div>
+          </div>
+          <div class="pre">Every time you skip posting, someone else in your niche gets the attention that should have been yours.</div>
+          <div class="hero">
+            <span class="thin">Content</span><br>
+            <span class="bold">Compounds</span><br>
+            <em>daily.</em>
+          </div>
+          <div class="bottom-pill">
+            <span><span class="dot"></span>noxlin.com</span>
+            <span>@noxlin</span>
+            <span>01 / 05</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Content</div>
+        <div class="slide nx-grad content">
+          <div class="top">
+            <div class="nx-brand ghost"><div class="nx-mark">N</div>noxlin</div>
+            <div class="chip">THE NUMBERS</div>
+            <div class="page-c">3</div>
+          </div>
+          <div class="stat">
+            <div class="big">40×</div>
+            <div class="unit">more opportunities</div>
+            <div class="lbl">— LinkedIn Executive Report, 2024</div>
+          </div>
+          <div class="support">Executives with a <b>complete personal brand</b> receive 40× more inbound opportunities than those who stay silent on the platform.</div>
+          <div class="bottom-pill">
+            <span><span class="dot"></span>noxlin.com</span>
+            <span>@noxlin</span>
+            <span>03 / 05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>Stat-led hooks</li>
+        <li>Industry reports</li>
+        <li>"Why this matters"</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Bricolage Grotesque</code> thin + bold</li>
+        <li><code>Instrument Serif</code> italic accent</li>
+        <li><code>JetBrains Mono</code> chips</li>
+      </ul>
+      <h4>Background</h4>
+      <ul>
+        <li>Navy → blue → mid-blue</li>
+        <li>Grain overlay at ~42%</li>
+        <li>Radial highlight top-right</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ 07 — NOXLIN SWIPE / CTA ═══════════════════════════════════════════════════════ -->
+<div class="template-section">
+  <div class="t-header">
+    <div class="t-num">07</div>
+    <div class="t-name">Noxlin Swipe</div>
+    <div class="t-tag">Closing slide · CTA · Follow</div>
+  </div>
+  <p class="t-desc">The final slide of every carousel. A single action, a single destination. Dark variant for a gravity-heavy close; light variant for a mid-deck swipe prompt. The CTA button pattern — pill + circled arrow — is the one reusable component users should recognise across every Noxlin post.</p>
+  <div class="t-body">
+    <div class="slide-pair">
+      <div class="slide-wrap">
+        <div class="slide-label">Final</div>
+        <div class="slide nx-cta">
+          <div class="top">
+            <div class="nx-brand ghost"><div class="nx-mark">N</div>noxlin</div>
+            <div>07 / 07 · END</div>
+          </div>
+          <div class="final-chip"><span class="d"></span>YOUR TURN</div>
+          <div class="head">Let Noxlin <em>handle</em> your LinkedIn.</div>
+          <div class="sub">Describe the problem. Get a <b>full month of content, designed and scheduled</b> — without learning another tool.</div>
+          <div class="cta-button">Try Noxlin free<div class="arr">→</div></div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin · noxlin.com</div>
+              </div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:rgba(255,255,255,0.55); letter-spacing:0.12em;">FOLLOW FOR MORE</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-wrap">
+        <div class="slide-label">Mid-deck</div>
+        <div class="slide nx-cta content">
+          <div class="top">
+            <div class="nx-brand"><div class="nx-mark">N</div>noxlin</div>
+            <div>04 / 07 · PAUSE</div>
+          </div>
+          <div class="final-chip"><span class="d" style="background:var(--nx-blue); box-shadow:0 0 10px var(--nx-blue);"></span>HALFWAY MARK</div>
+          <div class="head">Still with <em>us</em>?<br>Good.</div>
+          <div class="sub">The <b>three slides ahead</b> are the ones most readers screenshot. Save this post now — you'll want to come back.</div>
+          <div class="cta-button">Keep swiping<div class="arr">→</div></div>
+          <div class="nx-footer">
+            <div class="nx-author">
+              <div class="av">N</div>
+              <div>
+                <div class="name">Noxlin</div>
+                <div class="handle">@noxlin · noxlin.com</div>
+              </div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--nx-muted); letter-spacing:0.12em;">SAVE FOR LATER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t-notes">
+      <h4>Use for</h4>
+      <ul>
+        <li>Last slide (dark)</li>
+        <li>Mid-deck prompts (light)</li>
+        <li>Follow / subscribe CTAs</li>
+      </ul>
+      <h4>Type</h4>
+      <ul>
+        <li><code>Bricolage Grotesque</code> head</li>
+        <li><code>Instrument Serif</code> italic</li>
+        <li><code>Manrope</code> button + body</li>
+      </ul>
+      <h4>Rules</h4>
+      <ul>
+        <li>Exactly one CTA button</li>
+        <li>Button pattern reused verbatim</li>
+        <li>One italic-serif word only</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER ═══════════════════════════════════════════════════════ -->
+<div class="shell-footer">
+  <div>
+    <div class="brand">Noxlin <em>— carousels</em></div>
+    <div class="note" style="margin-top:6px">7 templates · 14 example slides · v2</div>
+  </div>
+  <div style="text-align:right">
+    <div class="note">All slides authored at <b>1080×1350 px</b>, displayed at 35% scale</div>
+    <div class="note" style="margin-top:2px">Open in a browser to inspect at full size</div>
+  </div>
+</div>
+
+<script>
+// Inject shared "Crafted by Noxlin" stamp into every slide, bottom-right
+document.querySelectorAll('.slide').forEach(slide => {
+  const stamp = document.createElement('div');
+  stamp.className = 'nx-stamp';
+  stamp.innerHTML = 'Crafted by <span class="sp-serif">Noxlin</span><span class="sp-dot"></span>noxlin.com';
+  slide.appendChild(stamp);
+});
+
+// Neutralize the .nx-author footer blocks — they represent the USER's
+// connected LinkedIn profile (auto-populated at runtime), not Noxlin.
+document.querySelectorAll('.nx-author').forEach(el => {
+  const av = el.querySelector('.av');
+  const name = el.querySelector('.name');
+  const handle = el.querySelector('.handle');
+  if (av) {
+    av.textContent = '';
+    av.setAttribute('style', 'background: repeating-linear-gradient(135deg, rgba(128,128,128,0.18) 0 6px, rgba(128,128,128,0.08) 6px 12px); border: 1.5px dashed currentColor; opacity: 0.55;');
+  }
+  if (name) name.textContent = 'Your Name';
+  if (handle) handle.textContent = '@yourhandle';
+});
+</script>
+
+
+
+</body></html>

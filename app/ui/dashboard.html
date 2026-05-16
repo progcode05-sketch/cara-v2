@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noxlin — Carousel Tester</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f0f2f5;
+      --panel:    #ffffff;
+      --border:   #dde3ec;
+      --text:     #0f172a;
+      --muted:    #6b7280;
+      --blue:     #0a66c2;
+      --blue-lt:  #e8f0fb;
+      --green:    #16a34a;
+      --green-lt: #dcfce7;
+      --red:      #dc2626;
+      --red-lt:   #fee2e2;
+      --r:        14px;
+      --font:     Inter, "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .topbar-brand {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .topbar-brand span { color: var(--blue); }
+
+    .li-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+
+    .li-badge:hover { border-color: var(--blue); }
+
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    .dot.on  { background: var(--green); }
+    .dot.off { background: #94a3b8; }
+
+    /* ── Layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      padding: 20px 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Panel ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 20px;
+    }
+
+    .panel + .panel { margin-top: 14px; }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* ── Form elements ── */
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .field:last-of-type { margin-bottom: 0; }
+
+    label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+
+    input, select, textarea {
+      font: inherit;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font-size: 14px;
+      transition: border-color .15s, box-shadow .15s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(10,102,194,.12);
+    }
+
+    textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+    }
+
+    .btn:active { transform: scale(.97); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+    .btn-primary   { background: var(--blue);   color: #fff; }
+    .btn-secondary { background: var(--blue-lt); color: var(--blue); }
+    .btn-danger    { background: var(--red-lt);  color: var(--red); }
+    .btn-green     { background: var(--green-lt); color: var(--green); }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+
+    /* ── Alert banner ── */
+    .alert {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .alert.show { display: block; }
+    .alert.ok   { background: var(--green-lt); color: var(--green); }
+    .alert.err  { background: var(--red-lt);   color: var(--red); }
+
+    /* ── Status bar ── */
+    .gen-status {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--blue-lt);
+      color: var(--blue);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .gen-status.show { display: flex; }
+
+    .spinner {
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      border: 2px solid rgba(10,102,194,.25);
+      border-top-color: var(--blue);
+      animation: spin .75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Right column ── */
+    .right { display: flex; flex-direction: column; gap: 14px; }
+
+    /* ── Slides grid ── */
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .slide-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .slide-card img { width: 100%; display: block; }
+    .slide-label {
+      padding: 7px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .empty-state {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      border: 1px dashed var(--border);
+      border-radius: var(--r);
+      background: #fafbfc;
+    }
+
+    .empty-state .icon { font-size: 32px; margin-bottom: 10px; }
+
+    /* ── LinkedIn connect modal ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.4);
+      z-index: 100;
+      place-items: center;
+    }
+
+    .modal-backdrop.show { display: grid; }
+
+    .modal {
+      background: var(--panel);
+      border-radius: var(--r);
+      padding: 28px;
+      max-width: 420px;
+      width: calc(100% - 40px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+
+    .modal h2 { font-size: 20px; margin-bottom: 8px; }
+    .modal p  { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+
+    .modal .btn-row { margin-top: 0; }
+
+    /* ── Meta strip ── */
+    .meta-strip {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      background: var(--blue-lt);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--blue);
+    }
+
+    .meta-item strong { font-weight: 700; }
+
+    /* ── Agent flowchart ─────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .badge.running { background: #fef3c7; color: #b45309; }
+    .badge.done    { background: #dcfce7; color: #15803d; }
+    .badge.error   { background: #fee2e2; color: #b91c1c; }
+
+    .agent-flowchart {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ag-stage-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      align-items: stretch;
+    }
+    .ag-stage {
+      position: relative;
+      padding: 10px 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fafbfc;
+      text-align: center;
+      transition: all .25s;
+    }
+    .ag-stage .ag-icon { font-size: 22px; }
+    .ag-stage .ag-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .ag-stage .ag-status {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ag-stage.running {
+      border-color: var(--blue);
+      background: var(--blue-lt);
+      box-shadow: 0 0 0 2px rgba(10,102,194,0.12);
+    }
+    .ag-stage.running .ag-status { color: var(--blue); }
+    .ag-stage.done {
+      border-color: var(--green);
+      background: var(--green-lt);
+    }
+    .ag-stage.done .ag-status { color: var(--green); }
+    .ag-stage.error { border-color: var(--red); background: var(--red-lt); }
+    .ag-stage.error .ag-status { color: var(--red); }
+
+    .ag-detail {
+      padding: 12px;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .ag-detail-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ag-agents-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    .ag-agent {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fafbfc;
+      font-size: 12px;
+      color: var(--text);
+      transition: all .25s;
+    }
+    .ag-agent .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #cbd5e1;
+      flex-shrink: 0;
+    }
+    .ag-agent.running { border-color: var(--blue); background: var(--blue-lt); }
+    .ag-agent.running .dot { background: var(--blue); animation: pulse 1.4s infinite; }
+    .ag-agent.done { border-color: var(--green); background: var(--green-lt); }
+    .ag-agent.done .dot { background: var(--green); }
+    .ag-agent.error { border-color: var(--red); background: var(--red-lt); }
+    .ag-agent.error .dot { background: var(--red); }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .ag-log-wrap {
+      max-height: 180px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0f172a;
+      color: #e2e8f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .ag-log-title {
+      padding: 8px 12px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #1e293b;
+    }
+    .ag-log {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 12px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .ag-log .ev-time { color: #64748b; margin-right: 8px; }
+    .ag-log .ev-agent { color: var(--blue-lt, #70B5F9); margin-right: 6px; }
+    .ag-log .ev-type { color: #fde68a; margin-right: 6px; }
+    .ag-log .ev-msg { color: #e2e8f0; }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-brand">Noxlin <span>Carousel</span></div>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <a href="/settings" class="li-badge" style="text-decoration:none; color:inherit;" title="Profile & writer voice settings">
+      ⚙ Profile
+    </a>
+    <div class="li-badge" id="liBadge">
+      <span class="dot off" id="liDot"></span>
+      <span id="liLabel">LinkedIn — not connected</span>
+    </div>
+  </div>
+</div>
+
+<!-- Alert -->
+<div style="padding: 0 24px; max-width: 1440px; margin: 16px auto 0;">
+  <div class="alert" id="alert"></div>
+</div>
+
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Left: controls -->
+  <div>
+
+    <!-- LinkedIn panel -->
+    <div class="panel" id="liPanel">
+      <div class="panel-title">LinkedIn Account</div>
+      <div id="liInfo" style="font-size:14px; color:var(--muted); margin-bottom:14px;">
+        Not connected. Connect to enable posting.
+      </div>
+      <div class="btn-row" style="margin-top:0;">
+        <button class="btn btn-primary" id="btnConnect">Connect LinkedIn</button>
+        <button class="btn btn-danger" id="btnDisconnect" disabled>Disconnect</button>
+      </div>
+    </div>
+
+    <!-- Generate panel -->
+    <div class="panel" style="margin-top:14px;">
+      <div class="panel-title">Generate Carousel</div>
+
+      <div class="field">
+        <label for="topic">Topic</label>
+        <input id="topic" type="text" placeholder="e.g. 5AM morning routine for founders" />
+      </div>
+
+      <div class="field">
+        <label for="tmpl">Template</label>
+        <select id="tmpl"></select>
+      </div>
+
+      <div class="field">
+        <label for="audience">Audience</label>
+        <input id="audience" type="text" value="Founders &amp; entrepreneurs" />
+      </div>
+
+      <div class="field">
+        <label for="tone">Tone</label>
+        <select id="tone">
+          <option>Bold</option>
+          <option>Professional</option>
+          <option>Conversational</option>
+          <option>Inspiring</option>
+          <option>Data-driven</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="cta">CTA</label>
+        <input id="cta" type="text" value="Follow for more systems that work." />
+      </div>
+
+      <div class="field">
+        <label for="slideCount">
+          Slides
+          <span style="float:right; font-weight:500; color:var(--muted); font-size:11px;">
+            <span id="slideCountValue">6</span> slides
+          </span>
+        </label>
+        <input id="slideCount" type="range" min="5" max="10" step="1" value="6"
+          style="width:100%; accent-color: var(--blue);" />
+        <div style="display:flex; justify-content:space-between; font-size:10px;
+                    font-family: ui-monospace,'SF Mono',Menlo,monospace;
+                    color: var(--muted); margin-top:4px;">
+          <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:14px;">
+        <button class="btn btn-primary" id="btnGenerate">Generate</button>
+        <button class="btn btn-secondary" id="btnDownload" disabled>Download PDF</button>
+      </div>
+
+      <div class="gen-status" id="genStatus">
+        <span class="spinner"></span>
+        <span id="genStatusText">Generating carousel…</span>
+      </div>
+    </div>
+
+    <!-- Caption + Post panel -->
+    <div class="panel" style="margin-top:14px;">
+      <div class="panel-title">Caption &amp; Post</div>
+
+      <div class="field">
+        <label for="caption">LinkedIn Caption</label>
+        <textarea id="caption" placeholder="Caption will appear here after generation."></textarea>
+      </div>
+
+      <div class="btn-row" style="margin-top:0;">
+        <button class="btn btn-green" id="btnPost" disabled>Post to LinkedIn</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right: preview -->
+  <div class="right">
+
+    <!-- Meta strip -->
+    <div class="meta-strip" id="metaStrip" style="display:none;">
+      <div class="meta-item"><strong>ID:</strong> <span id="metaId">—</span></div>
+      <div class="meta-item"><strong>Template:</strong> <span id="metaTmpl">—</span></div>
+      <div class="meta-item"><strong>Slides:</strong> <span id="metaSlides">—</span></div>
+      <div class="meta-item"><strong>PDF:</strong> <span id="metaPdf">—</span></div>
+    </div>
+
+    <!-- Agent flowchart panel -->
+    <div class="panel" id="agentPanel" style="margin-bottom:14px;">
+      <div class="panel-title">
+        Agent Pipeline
+        <span class="badge" id="agentBadge" style="margin-left:8px;">idle</span>
+      </div>
+      <div id="agentFlowchart" class="agent-flowchart">
+        <!-- Pipeline stages -->
+        <div class="ag-stage-row">
+          <div class="ag-stage" data-stage="resolve_template">
+            <div class="ag-icon">📁</div>
+            <div class="ag-name">Resolve template</div>
+            <div class="ag-status">—</div>
+          </div>
+          <div class="ag-stage" data-stage="agents_planning">
+            <div class="ag-icon">🧠</div>
+            <div class="ag-name">Input-auth → Writers → Auth</div>
+            <div class="ag-status">—</div>
+          </div>
+          <div class="ag-stage" data-stage="image_generation">
+            <div class="ag-icon">🎨</div>
+            <div class="ag-name">Visual agents</div>
+            <div class="ag-status">—</div>
+          </div>
+          <div class="ag-stage" data-stage="html_rendering">
+            <div class="ag-icon">📄</div>
+            <div class="ag-name">HTML render</div>
+            <div class="ag-status">—</div>
+          </div>
+          <div class="ag-stage" data-stage="pdf_export_via_chromium">
+            <div class="ag-icon">📦</div>
+            <div class="ag-name">PDF (Chromium)</div>
+            <div class="ag-status">—</div>
+          </div>
+        </div>
+
+        <!-- Writing agents detail -->
+        <div class="ag-detail">
+          <div class="ag-agent" data-agent="InputAuthenticator" style="margin-bottom:10px;">
+            <span class="dot"></span><b>Input Authenticator</b> — fixes typos in topic / brief / tone before writers run
+          </div>
+          <div class="ag-detail-title">Writing Agents (parallel)</div>
+          <div class="ag-agents-grid">
+            <div class="ag-agent" data-agent="WritingAgent#1"><span class="dot"></span><b>#1</b> Hook / Cover</div>
+            <div class="ag-agent" data-agent="WritingAgent#2"><span class="dot"></span><b>#2</b> Problem</div>
+            <div class="ag-agent" data-agent="WritingAgent#3"><span class="dot"></span><b>#3</b> Insight</div>
+            <div class="ag-agent" data-agent="WritingAgent#4"><span class="dot"></span><b>#4</b> Framework / Proof</div>
+            <div class="ag-agent" data-agent="WritingAgent#5"><span class="dot"></span><b>#5</b> CTA</div>
+          </div>
+          <div class="ag-agent" data-agent="AuthenticatorAgent" style="margin-top:8px;">
+            <span class="dot"></span><b>Output Authenticator</b> — quality review pass on finished deck
+          </div>
+        </div>
+
+        <!-- Live event log -->
+        <div class="ag-log-wrap">
+          <div class="ag-log-title">Live event log</div>
+          <div class="ag-log" id="agentLog"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slides -->
+    <div class="panel">
+      <div class="panel-title">Slide Previews</div>
+      <div id="slidesGrid" class="slides-grid"></div>
+      <div class="empty-state" id="slidesEmpty">
+        <div class="icon">🖼</div>
+        Generate a carousel to see slide previews.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LinkedIn connect modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <h2>Connect LinkedIn</h2>
+    <p>
+      You'll be redirected to LinkedIn to authorise Noxlin.<br><br>
+      <strong>Note:</strong> Make sure <code>http://localhost:3002/auth/linkedin/callback</code>
+      is added as an authorised redirect URL in your LinkedIn Developer App.
+    </p>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="btnModalGo">Continue to LinkedIn</button>
+      <button class="btn btn-secondary" id="btnModalCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = "";  // same origin
+
+  // ── helpers ─────────────────────────────────────────────────────────────
+  function $id(id) { return document.getElementById(id); }
+
+  function alert(msg, type) {
+    const el = $id("alert");
+    el.textContent = msg;
+    el.className = `alert show ${type === "ok" ? "ok" : "err"}`;
+    setTimeout(() => el.className = "alert", 5000);
+  }
+
+  function artifactUrl(fsPath) {
+    if (!fsPath) return "";
+    const norm = String(fsPath).replaceAll("\\", "/");
+    const marker = "data/artifacts/";
+    const idx = norm.toLowerCase().indexOf(marker.toLowerCase());
+    if (idx === -1) return "";
+    return `/artifacts/${norm.slice(idx + marker.length)}`;
+  }
+
+  // ── state ────────────────────────────────────────────────────────────────
+  const state = { li: null, carousel: null };
+
+  // ── LinkedIn status ──────────────────────────────────────────────────────
+  async function refreshLI() {
+    const data = await fetch(`${API}/auth/linkedin/status`).then(r => r.json());
+    state.li = data;
+    const connected  = !!data.connected;
+    const canPost    = !!data.can_post;
+    const profile    = data.profile || {};
+    const name       = profile.name || profile.localizedFirstName || "LinkedIn";
+
+    $id("liDot").className   = `dot ${connected ? "on" : "off"}`;
+    $id("liLabel").textContent = connected ? `${name} — connected` : "LinkedIn — not connected";
+    $id("liInfo").innerHTML    = connected
+      ? `<strong>${name}</strong> is connected. ${canPost ? "Ready to post." : "Re-connect to enable posting."}`
+      : "Connect your LinkedIn account to post carousels directly.";
+    $id("btnDisconnect").disabled = !connected;
+    updatePostBtn();
+  }
+
+  function updatePostBtn() {
+    $id("btnPost").disabled = !(state.li?.connected && state.carousel?.id);
+  }
+
+  // ── Templates ────────────────────────────────────────────────────────────
+  async function loadTemplates() {
+    const data = await fetch(`${API}/templates/catalog`).then(r => r.json());
+    const sel  = $id("tmpl");
+    sel.innerHTML = "";
+    for (const t of data.templates || []) {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.textContent = t.name;
+      sel.appendChild(opt);
+    }
+  }
+
+  // ── Generate ─────────────────────────────────────────────────────────────
+  // ── Agent flowchart streaming ──────────────────────────────────────────
+  let activeEventSource = null;
+  let pipelineDone = false;  // guards against EventSource auto-reconnect after end
+
+  function resetFlowchart() {
+    pipelineDone = false;
+    document.querySelectorAll(".ag-stage").forEach(el => {
+      el.classList.remove("running", "done", "error");
+      el.querySelector(".ag-status").textContent = "—";
+    });
+    document.querySelectorAll(".ag-agent").forEach(el => {
+      el.classList.remove("running", "done", "error");
+    });
+    $id("agentLog").innerHTML = "";
+    $id("agentBadge").textContent = "starting";
+    $id("agentBadge").className = "badge running";
+  }
+
+  function markRunningStagesAsFailed(reason) {
+    document.querySelectorAll(".ag-stage.running").forEach(el => {
+      el.classList.remove("running");
+      el.classList.add("error");
+      el.querySelector(".ag-status").textContent = "failed";
+    });
+    document.querySelectorAll(".ag-agent.running").forEach(el => {
+      el.classList.remove("running");
+      el.classList.add("error");
+    });
+    if (reason) {
+      $id("agentBadge").textContent = "failed";
+      $id("agentBadge").className = "badge error";
+    }
+  }
+
+  function logEvent(evt) {
+    const t = new Date(evt.timestamp * 1000).toLocaleTimeString();
+    const log = $id("agentLog");
+    const line = document.createElement("div");
+    let msg = "";
+    if (evt.payload) {
+      const p = evt.payload;
+      if (p.stage) msg += `stage=${p.stage} `;
+      if (p.assignments) msg += `assigned=${JSON.stringify(p.assignments)} `;
+      if (p.slide_indexes) msg += `slides=[${p.slide_indexes.join(",")}] `;
+      if (p.slides_filled !== undefined) msg += `filled=${p.slides_filled} `;
+      if (p.sample) msg += `sample="${p.sample}" `;
+      if (p.approved !== undefined) msg += `approved=${p.approved} `;
+      if (p.issues && p.issues.length) msg += `issues=${p.issues.length} `;
+      if (p.error) msg += `error="${p.error}" `;
+      if (p.template_id) msg += `template=${p.template_id} `;
+      if (p.pdf_path) msg += `pdf=${p.pdf_path.split(/[\\/]/).pop()} `;
+    }
+    line.innerHTML =
+      `<span class="ev-time">${t}</span>` +
+      `<span class="ev-agent">[${evt.agent}]</span>` +
+      `<span class="ev-type">${evt.type}</span>` +
+      `<span class="ev-msg">${msg}</span>`;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function applyEvent(evt) {
+    logEvent(evt);
+    const p = evt.payload || {};
+
+    // Pipeline stage transitions
+    if (evt.agent === "Pipeline") {
+      if (evt.type === "stage_started" && p.stage) {
+        const el = document.querySelector(`.ag-stage[data-stage="${p.stage}"]`);
+        if (el) {
+          el.classList.add("running");
+          el.querySelector(".ag-status").textContent = "running";
+        }
+      } else if (evt.type === "stage_completed" && p.stage) {
+        const el = document.querySelector(`.ag-stage[data-stage="${p.stage}"]`);
+        if (el) {
+          el.classList.remove("running");
+          el.classList.add("done");
+          el.querySelector(".ag-status").textContent = "done";
+        }
+      } else if (evt.type === "pipeline_completed") {
+        pipelineDone = true;
+        $id("agentBadge").textContent = "completed";
+        $id("agentBadge").className = "badge done";
+      } else if (evt.type === "pipeline_failed") {
+        pipelineDone = true;
+        markRunningStagesAsFailed(p.error || "failed");
+        if (p.error) {
+          alert(`Pipeline failed: ${p.error}`, "err");
+        }
+      } else if (evt.type === "pipeline_finalised") {
+        // Always fires last. If we never saw pipeline_completed, treat any
+        // still-running stages as failed so the UI never stays stuck.
+        if (!pipelineDone) {
+          markRunningStagesAsFailed("did not complete");
+        }
+        pipelineDone = true;
+        // Close the SSE so the browser doesn't try to reconnect to a closed bus.
+        if (activeEventSource) {
+          try { activeEventSource.close(); } catch (e) {}
+          activeEventSource = null;
+        }
+      }
+    }
+
+    // Per-agent transitions
+    const agentEl = document.querySelector(`.ag-agent[data-agent="${evt.agent}"]`);
+    if (agentEl) {
+      if (evt.type === "agent_started") agentEl.classList.add("running");
+      if (evt.type === "agent_completed") {
+        agentEl.classList.remove("running");
+        agentEl.classList.add("done");
+      }
+      if (evt.type === "agent_failed") {
+        agentEl.classList.remove("running");
+        agentEl.classList.add("error");
+      }
+    }
+  }
+
+  async function startAgentStream() {
+    if (activeEventSource) {
+      try { activeEventSource.close(); } catch (e) {}
+      activeEventSource = null;
+    }
+    resetFlowchart();
+    const r = await fetch(`${API}/agents/sessions`, { method: "POST" });
+    const { session_id } = await r.json();
+    const es = new EventSource(`${API}/agents/sessions/${session_id}/stream`);
+    es.onmessage = (e) => {
+      try {
+        const evt = JSON.parse(e.data);
+        applyEvent(evt);
+      } catch {}
+    };
+    es.onerror = () => {
+      // After pipeline_finalised, EventSource auto-reconnects to a closed bus
+      // — that's harmless, so don't surface "disconnected" in that case.
+      if (pipelineDone) {
+        try { es.close(); } catch (e) {}
+        return;
+      }
+      const badge = $id("agentBadge");
+      if (badge.textContent !== "completed" && badge.textContent !== "failed") {
+        badge.textContent = "disconnected";
+        badge.className = "badge error";
+      }
+    };
+    activeEventSource = es;
+    return session_id;
+  }
+
+  async function generate() {
+    const topic = $id("topic").value.trim();
+    if (!topic) { alert("Enter a topic first.", "err"); $id("topic").focus(); return; }
+
+    $id("btnGenerate").disabled = true;
+    $id("btnGenerate").textContent = "Generating…";
+    $id("genStatus").classList.add("show");
+    $id("genStatusText").textContent = "Calling AI agents…";
+
+    try {
+      // 1. Open the SSE stream BEFORE firing the request, so we don't miss events
+      const session_id = await startAgentStream();
+
+      // 2. Kick off the generation
+      const resp = await fetch(`${API}/carousels/generate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          template_id:     $id("tmpl").value,
+          topic,
+          brief:           `Create a useful LinkedIn carousel about: ${topic}`,
+          audience:        $id("audience").value.trim() || "Founders",
+          tone:            $id("tone").value,
+          cta:             $id("cta").value.trim(),
+          slide_count:     parseInt($id("slideCount").value, 10) || 6,
+          generation_mode: "slot_fill",
+          image_backend:   "gemini",
+          session_id,
+        }),
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.detail || `HTTP ${resp.status}`);
+      }
+
+      const plan = await resp.json();
+      state.carousel = plan;
+      renderCarousel(plan);
+      alert("Carousel generated successfully.", "ok");
+    } catch (e) {
+      $id("agentBadge").textContent = "error";
+      $id("agentBadge").className = "badge error";
+      alert(e.message || "Generation failed.", "err");
+    } finally {
+      $id("btnGenerate").disabled  = false;
+      $id("btnGenerate").textContent = "Generate";
+      setTimeout(() => $id("genStatus").classList.remove("show"), 1500);
+      // Close the SSE stream after a grace period so trailing events arrive
+      setTimeout(() => {
+        if (activeEventSource) {
+          try { activeEventSource.close(); } catch (e) {}
+          activeEventSource = null;
+        }
+      }, 4000);
+    }
+  }
+
+  // ── Render carousel ──────────────────────────────────────────────────────
+  async function renderCarousel(plan) {
+    const pdfUrl   = artifactUrl(plan.artifacts?.pdf);
+    const manifest = artifactUrl(plan.artifacts?.preview_manifest);
+
+    // Meta strip
+    $id("metaStrip").style.display = "flex";
+    $id("metaId").textContent    = plan.id || "—";
+    $id("metaTmpl").textContent  = plan.template_id || "—";
+    $id("metaSlides").textContent = plan.slide_count ?? plan.slides?.length ?? "—";
+    $id("metaPdf").textContent   = pdfUrl ? "Ready" : "Missing";
+
+    // Download button
+    $id("btnDownload").disabled = !pdfUrl;
+    $id("btnDownload").onclick  = () => pdfUrl && window.open(pdfUrl, "_blank", "noreferrer");
+
+    // Caption
+    const caption = buildCaption(plan);
+    $id("caption").value = caption;
+
+    // Slides
+    const grid  = $id("slidesGrid");
+    const empty = $id("slidesEmpty");
+    grid.innerHTML = "";
+    empty.style.display = "none";
+
+    if (manifest) {
+      try {
+        const lines = await fetch(manifest).then(r => r.text());
+        const urls  = lines.split(/\r?\n/).map(l => artifactUrl(l.trim())).filter(Boolean);
+        if (urls.length) {
+          grid.innerHTML = urls.map((url, i) => `
+            <div class="slide-card">
+              <img src="${url}" alt="Slide ${i+1}" loading="lazy" />
+              <div class="slide-label">Slide ${i+1}</div>
+            </div>
+          `).join("");
+        } else {
+          empty.style.display = "";
+        }
+      } catch {
+        empty.style.display = "";
+      }
+    } else {
+      empty.style.display = "";
+    }
+
+    updatePostBtn();
+  }
+
+  function buildCaption(plan) {
+    const tone = (plan.tone || "Direct").toLowerCase();
+    const topic = (plan.topic || "this carousel").toLowerCase();
+    const audience = (plan.audience || "founders").toLowerCase();
+
+    // Tone-aware opening + closer
+    const openings = {
+      direct:        `The truth about ${topic} most ${audience} miss:`,
+      premium:       `A considered take on ${topic}.`,
+      clear:         `Here's what works for ${topic}, simplified.`,
+      playful:       `Let's talk ${topic}. Buckle up.`,
+      bold:          `Most advice about ${topic} is wrong. Here's why:`,
+      professional:  `Insights on ${topic} for ${audience}.`,
+      warm:          `A few honest thoughts on ${topic}.`,
+    };
+    const closers = {
+      direct:        "Save this if it lands.",
+      premium:       "Worth a read.",
+      clear:         "Hope this helps.",
+      playful:       "Thoughts? Drop them below 👇",
+      bold:          "Disagree? Tell me why.",
+      professional:  "Open to perspectives.",
+      warm:          "Would love to hear how this lands for you.",
+    };
+    const opening = openings[tone] || `On ${topic}:`;
+    const closer = closers[tone] || "";
+
+    // Pull strongest line from each of first 3 slides
+    const slotPriority = ["hero","head","quote","headline","support","sub","body_html","lead_text","body"];
+    const bullets = [];
+    for (const slide of (plan.slides || []).slice(0, 3)) {
+      const sv = slide.slot_values || {};
+      for (const k of slotPriority) {
+        const raw = (sv[k] || "").toString();
+        if (!raw) continue;
+        const cleaned = raw.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+        if (cleaned) { bullets.push(`→ ${cleaned.slice(0, 140)}`); break; }
+      }
+    }
+
+    const parts = [opening, ""];
+    parts.push(...bullets);
+    if (plan.cta)    parts.push("", plan.cta);
+    if (closer && (plan.cta || bullets.length)) parts.push("", closer);
+    return parts.filter(p => p !== undefined).join("\n").trim();
+  }
+
+  // ── Post to LinkedIn ─────────────────────────────────────────────────────
+  async function postToLinkedIn() {
+    if (!state.carousel?.id || !state.li?.connected) return;
+    if (!state.li?.can_post) {
+      window.location.href = "/auth/linkedin/start?mode=publish";
+      return;
+    }
+
+    $id("btnPost").disabled    = true;
+    $id("btnPost").textContent = "Posting…";
+
+    try {
+      const resp = await fetch(`${API}/carousels/${encodeURIComponent(state.carousel.id)}/publish-linkedin`, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ commentary: $id("caption").value.trim() }),
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.detail || `HTTP ${resp.status}`);
+      }
+
+      const data = await resp.json();
+      state.carousel = data.carousel || state.carousel;
+      alert(`Posted to LinkedIn! ${data.publish_result?.post_id ? "Post ID: " + data.publish_result.post_id : ""}`, "ok");
+    } catch (e) {
+      alert(e.message || "LinkedIn posting failed.", "err");
+    } finally {
+      $id("btnPost").textContent = "Post to LinkedIn";
+      updatePostBtn();
+    }
+  }
+
+  // ── LinkedIn connect modal ────────────────────────────────────────────────
+  $id("liBadge").addEventListener("click", () => {
+    if (state.li?.connected) return;
+    $id("modalBackdrop").classList.add("show");
+  });
+
+  $id("btnConnect").addEventListener("click", () => {
+    $id("modalBackdrop").classList.add("show");
+  });
+
+  $id("btnModalCancel").addEventListener("click", () => {
+    $id("modalBackdrop").classList.remove("show");
+  });
+
+  $id("btnModalGo").addEventListener("click", () => {
+    window.location.href = "/auth/linkedin/start?mode=signin";
+  });
+
+  $id("btnDisconnect").addEventListener("click", async () => {
+    await fetch(`${API}/auth/linkedin/disconnect`, { method: "POST" });
+    await refreshLI();
+    alert("LinkedIn disconnected.", "ok");
+  });
+
+  // ── Wire up buttons ───────────────────────────────────────────────────────
+  $id("btnGenerate").addEventListener("click", generate);
+  $id("slideCount").addEventListener("input", e => {
+    $id("slideCountValue").textContent = e.target.value;
+  });
+  $id("btnPost").addEventListener("click", postToLinkedIn);
+  $id("topic").addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); generate(); } });
+
+  // ── Handle redirect back from LinkedIn OAuth ─────────────────────────────
+  (function handleOAuthReturn() {
+    const params = new URLSearchParams(window.location.search);
+    const li = params.get("linkedin");
+    const msg = params.get("message");
+    if (li === "connected") alert("LinkedIn connected successfully.", "ok");
+    if (li === "error")     alert(msg || "LinkedIn connection failed.", "err");
+    if (li) {
+      params.delete("linkedin"); params.delete("message");
+      const next = window.location.pathname + (params.toString() ? "?" + params : "");
+      history.replaceState({}, "", next);
+    }
+  })();
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+  (async function init() {
+    try {
+      await Promise.all([loadTemplates(), refreshLI()]);
+    } catch (e) {
+      alert("Failed to load dashboard: " + e.message, "err");
+    }
+  })();
+</script>
+</body>
+</html>

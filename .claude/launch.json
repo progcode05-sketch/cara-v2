@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Noxlin API",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["run_local_dashboard.py", "--port", "3002", "--reload"],
+      "port": 3002
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local package cache (dev-only bundled deps)
+.packages/
+
+# Runtime data — do NOT commit carousel/auth data
+data/
+
+# Environment secrets
+.env
+.env.*
+
+# Temp files
+.tmp-chrome-profile/
+.tmp_tests/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
