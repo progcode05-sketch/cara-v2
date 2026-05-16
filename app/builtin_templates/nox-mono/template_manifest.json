@@ -1,0 +1,250 @@
+{
+  "id": "nox-mono",
+  "name": "Noxlin Mono",
+  "description": "Pitch-black keynote canvas. Bricolage Grotesque hero with one Instrument-Serif italic accent. Type-only \u2014 best for hooks, announcements, contrarian takes.",
+  "source_type": "html",
+  "exact_source": true,
+  "allowed_slide_counts": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "default_slide_roles": [
+    "cover",
+    "insight",
+    "insight",
+    "insight",
+    "cta"
+  ],
+  "slots": {
+    "stamp_brand": {
+      "name": "stamp_brand",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 24,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "stamp_site": {
+      "name": "stamp_site",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 32,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_picture": {
+      "name": "author_picture",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 600,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "brand_name": {
+      "name": "brand_name",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 24,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "brand_site": {
+      "name": "brand_site",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 32,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "page_number": {
+      "name": "page_number",
+      "slot_type": "text",
+      "required": true,
+      "max_chars": 12,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "kicker": {
+      "name": "kicker",
+      "slot_type": "text",
+      "required": true,
+      "max_chars": 64,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "hero": {
+      "name": "hero",
+      "slot_type": "text",
+      "required": true,
+      "max_chars": 200,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "support": {
+      "name": "support",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 360,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_initial": {
+      "name": "author_initial",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 4,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_name": {
+      "name": "author_name",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 40,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_handle": {
+      "name": "author_handle",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 40,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "swipe_label": {
+      "name": "swipe_label",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 24,
+      "mode": "deterministic",
+      "prompt_role": null
+    }
+  },
+  "slide_roles": {
+    "cover": {
+      "role": "cover",
+      "description": "Opening hook slide for this template.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "brand_name",
+        "brand_site",
+        "page_number",
+        "kicker",
+        "hero",
+        "support",
+        "author_initial",
+        "author_name",
+        "author_handle",
+        "swipe_label"
+      ],
+      "render_variant": "cover"
+    },
+    "insight": {
+      "role": "insight",
+      "description": "Insight or reframe slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "brand_name",
+        "brand_site",
+        "page_number",
+        "kicker",
+        "hero",
+        "support",
+        "author_initial",
+        "author_name",
+        "author_handle",
+        "swipe_label"
+      ],
+      "render_variant": "content"
+    },
+    "problem": {
+      "role": "problem",
+      "description": "Pain point slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "brand_name",
+        "brand_site",
+        "page_number",
+        "kicker",
+        "hero",
+        "support",
+        "author_initial",
+        "author_name",
+        "author_handle",
+        "swipe_label"
+      ],
+      "render_variant": "content"
+    },
+    "framework": {
+      "role": "framework",
+      "description": "Framework or principle slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "brand_name",
+        "brand_site",
+        "page_number",
+        "kicker",
+        "hero",
+        "support",
+        "author_initial",
+        "author_name",
+        "author_handle",
+        "swipe_label"
+      ],
+      "render_variant": "content"
+    },
+    "cta": {
+      "role": "cta",
+      "description": "Closing slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "brand_name",
+        "brand_site",
+        "page_number",
+        "kicker",
+        "hero",
+        "support",
+        "author_initial",
+        "author_name",
+        "author_handle",
+        "swipe_label"
+      ],
+      "render_variant": "content"
+    }
+  },
+  "overflow_rules": {
+    "hero": "shrink_then_truncate"
+  },
+  "prompt_hints": {
+    "style": "Pitch-black keynote canvas. Bricolage Grotesque hero with one Instrument-Serif italic accent. Type-only \u2014 best for hooks, announcements, contrarian takes.",
+    "tag": "Keynote \u00b7 Big statements",
+    "palette": [
+      "#0A66C2",
+      "#70B5F9",
+      "#0A0A0A"
+    ],
+    "visual_density": "low"
+  },
+  "render_config": {
+    "width": 1080,
+    "height": 1350,
+    "export_format": "pdf",
+    "preview_format": "svg",
+    "background_color": "#0A0A0A"
+  }
+}

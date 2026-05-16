@@ -8,8 +8,8 @@ import json
 import re
 from pathlib import Path
 
-DESIGN_PATH = Path(r"H:/System Media/Download/noxlin caraousel/Noxlin Carousel Templates.html")
-OUT_ROOT = Path(r"H:/cara/data/templates")
+DESIGN_PATH = Path(__file__).parent / "Noxlin Carousel Templates.html"
+OUT_ROOT = Path(__file__).parent / "app" / "builtin_templates"
 DESIGN = DESIGN_PATH.read_text(encoding="utf-8")
 
 # ---------------------------------------------------------------------

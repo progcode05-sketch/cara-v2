@@ -1,0 +1,185 @@
+{
+  "id": "nox-quote",
+  "name": "Noxlin Quote",
+  "description": "Pull-quote slides with giant Fraunces quotation glyph. Light cream variant + dark black variant. Max 12 words.",
+  "source_type": "html",
+  "exact_source": true,
+  "allowed_slide_counts": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "default_slide_roles": [
+    "cover",
+    "insight",
+    "insight",
+    "insight",
+    "cta"
+  ],
+  "slots": {
+    "stamp_brand": {
+      "name": "stamp_brand",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 24,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "stamp_site": {
+      "name": "stamp_site",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 32,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_picture": {
+      "name": "author_picture",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 600,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "page_number": {
+      "name": "page_number",
+      "slot_type": "text",
+      "required": true,
+      "max_chars": 12,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "context_label": {
+      "name": "context_label",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 60,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "quote": {
+      "name": "quote",
+      "slot_type": "text",
+      "required": true,
+      "max_chars": 180,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "author_name": {
+      "name": "author_name",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 40,
+      "mode": "deterministic",
+      "prompt_role": null
+    },
+    "attribution_topic": {
+      "name": "attribution_topic",
+      "slot_type": "text",
+      "required": false,
+      "max_chars": 60,
+      "mode": "deterministic",
+      "prompt_role": null
+    }
+  },
+  "slide_roles": {
+    "cover": {
+      "role": "cover",
+      "description": "Opening hook slide for this template.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "page_number",
+        "context_label",
+        "quote",
+        "author_name",
+        "attribution_topic"
+      ],
+      "render_variant": "cover"
+    },
+    "insight": {
+      "role": "insight",
+      "description": "Insight or reframe slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "page_number",
+        "context_label",
+        "quote",
+        "author_name",
+        "attribution_topic"
+      ],
+      "render_variant": "content"
+    },
+    "problem": {
+      "role": "problem",
+      "description": "Pain point slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "page_number",
+        "context_label",
+        "quote",
+        "author_name",
+        "attribution_topic"
+      ],
+      "render_variant": "content"
+    },
+    "framework": {
+      "role": "framework",
+      "description": "Framework or principle slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "page_number",
+        "context_label",
+        "quote",
+        "author_name",
+        "attribution_topic"
+      ],
+      "render_variant": "content"
+    },
+    "cta": {
+      "role": "cta",
+      "description": "Closing slide.",
+      "slots": [
+        "stamp_brand",
+        "stamp_site",
+        "author_picture",
+        "page_number",
+        "context_label",
+        "quote",
+        "author_name",
+        "attribution_topic"
+      ],
+      "render_variant": "content"
+    }
+  },
+  "overflow_rules": {
+    "hero": "shrink_then_truncate"
+  },
+  "prompt_hints": {
+    "style": "Pull-quote slides with giant Fraunces quotation glyph. Light cream variant + dark black variant. Max 12 words.",
+    "tag": "Quote cards \u00b7 Reframes",
+    "palette": [
+      "#0A66C2",
+      "#70B5F9",
+      "#FAF8F3"
+    ],
+    "visual_density": "low"
+  },
+  "render_config": {
+    "width": 1080,
+    "height": 1350,
+    "export_format": "pdf",
+    "preview_format": "svg",
+    "background_color": "#FAF8F3"
+  }
+}
