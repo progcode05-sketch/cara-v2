@@ -114,30 +114,45 @@ class RenderService:
             # LOCALAPPDATA isn't visible to the uvicorn subprocess.
             import os as _os
             candidates: list[Path] = []
-            # Try MULTIPLE sources for the ms-playwright root, not just LOCALAPPDATA
             roots_to_try: list[Path] = []
-            for env_var in ("LOCALAPPDATA", "USERPROFILE", "HOME"):
+
+            # Linux/Render: check PLAYWRIGHT_BROWSERS_PATH first, then ~/.cache
+            pw_browsers = _os.environ.get("PLAYWRIGHT_BROWSERS_PATH", "")
+            if pw_browsers:
+                roots_to_try.append(Path(pw_browsers))
+            home = _os.environ.get("HOME", "")
+            if home:
+                roots_to_try.append(Path(home) / ".cache" / "ms-playwright")
+
+            # Windows: check LOCALAPPDATA and common fallbacks
+            for env_var in ("LOCALAPPDATA", "USERPROFILE"):
                 env_val = _os.environ.get(env_var, "")
                 if env_val:
                     if env_var == "LOCALAPPDATA":
                         roots_to_try.append(Path(env_val) / "ms-playwright")
                     else:
                         roots_to_try.append(Path(env_val) / "AppData" / "Local" / "ms-playwright")
-            # Also try Path.home() which uses Windows API, not env vars
             try:
                 roots_to_try.append(Path.home() / "AppData" / "Local" / "ms-playwright")
             except Exception:  # noqa: BLE001
                 pass
+
             seen: set[str] = set()
             for ms in roots_to_try:
                 key = str(ms).lower()
                 if key in seen or not ms.is_dir():
                     continue
                 seen.add(key)
-                shells = sorted(ms.glob("chromium_headless_shell-*/chrome-headless-shell-win64/chrome-headless-shell.exe"), reverse=True)
-                chromes = sorted(ms.glob("chromium-*/chrome-win64/chrome.exe"), reverse=True)
-                candidates.extend(shells)
-                candidates.extend(chromes)
+                # Linux binaries
+                shells_linux = sorted(ms.glob("chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell"), reverse=True)
+                chromes_linux = sorted(ms.glob("chromium-*/chrome-linux64/chrome"), reverse=True)
+                # Windows binaries
+                shells_win = sorted(ms.glob("chromium_headless_shell-*/chrome-headless-shell-win64/chrome-headless-shell.exe"), reverse=True)
+                chromes_win = sorted(ms.glob("chromium-*/chrome-win64/chrome.exe"), reverse=True)
+                candidates.extend(shells_linux)
+                candidates.extend(chromes_linux)
+                candidates.extend(shells_win)
+                candidates.extend(chromes_win)
             for candidate in candidates:
                 if candidate.is_file():
                     launch_kwargs["executable_path"] = str(candidate)

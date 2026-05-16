@@ -47,7 +47,7 @@ class Settings:
             gemini_api_key=os.environ.get("GEMINI_API_KEY", ""),
             gemini_image_model=os.environ.get(
                 "GEMINI_IMAGE_MODEL",
-                "gemini-2.5-flash-preview-image-generation",
+                "gemini-2.0-flash-preview-image-generation",
             ),
             claude_api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
             claude_model=os.environ.get(
